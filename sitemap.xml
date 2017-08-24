@@ -2,28 +2,35 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yoursite.com/tags/index.html</loc>
+    <loc>https://zhangpu1211.github.io/2017/08/24/vscode%E4%B8%AD%E4%BD%BF%E7%94%A8git/</loc>
     
-    <lastmod>2017-08-24T09:27:09.859Z</lastmod>
+    <lastmod>2017-08-24T10:51:46.205Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/about/index.html</loc>
+    <loc>https://zhangpu1211.github.io/categories/index.html</loc>
+    
+    <lastmod>2017-08-24T10:51:22.617Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://zhangpu1211.github.io/tags/index.html</loc>
+    
+    <lastmod>2017-08-24T10:51:14.596Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://zhangpu1211.github.io/about/index.html</loc>
     
     <lastmod>2017-08-24T09:01:08.411Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/categories/index.html</loc>
-    
-    <lastmod>2017-08-24T09:00:33.876Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/08/24/hello-world/</loc>
+    <loc>https://zhangpu1211.github.io/2017/08/24/hello-world/</loc>
     
     <lastmod>2017-08-24T02:36:47.025Z</lastmod>
     

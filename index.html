@@ -100,7 +100,7 @@
 <meta name="description" content="有一天会骄傲那些难熬的时光，可以轻轻的回答我很好">
 <meta property="og:type" content="website">
 <meta property="og:title" content="张璞">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="https://zhangpu1211.github.io/index.html">
 <meta property="og:site_name" content="张璞">
 <meta property="og:description" content="有一天会骄傲那些难熬的时光，可以轻轻的回答我很好">
 <meta property="og:locale" content="zh-Hans">
@@ -136,7 +136,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="https://zhangpu1211.github.io/"/>
 
 
 
@@ -334,7 +334,191 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/24/hello-world/">
+    <link itemprop="mainEntityOfPage" href="https://zhangpu1211.github.io/2017/08/24/vscode中使用git/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="张璞">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://img0.imgtn.bdimg.com/it/u=179042182,805061788&fm=27&gp=0.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="张璞">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/24/vscode中使用git/" itemprop="url">vscode中使用git</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-24T18:36:12+08:00">
+                2017-08-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/tools/" itemprop="url" rel="index">
+                    <span itemprop="name">工具</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/08/24/vscode中使用git/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/08/24/vscode中使用git/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/08/24/vscode中使用git/" class="leancloud_visitors" data-flag-title="vscode中使用git">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong><em>vscode简介</em></strong><br>VSCode是微软推出的一款轻量编辑器，采取了和VS相同的UI界面，搭配合适的插件可以优化前端开发的体验。<br>布局：左侧是用于展示所要编辑的所有文件和文件夹的文件管理器，依次是<strong>资源管理器</strong>，<strong>搜索</strong>，<strong>GIT</strong>，<strong>调试</strong>，<strong>插件</strong>，右侧是打开文件的编辑区域，最多可同时打开三个编辑区域到侧边。在初次使用时如果本地没有安装git会提示先安装git，然后重启vscode。</p>
+<p><strong><em>git下载地址</em></strong><br><strong><em><a href="https://git-scm.com/download/win" target="_blank" rel="external">Downloading Git</a></em></strong><br><em>如果安装过程提示无法添加环境变量到path中，则需要将git安装目录下的cmd目录添加到系统的path变量下</em></p>
+<p><strong><em>配置git</em></strong></p>
+<ul>
+<li><p>设置全局配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git config --global user.name &quot;your name&quot; </div><div class="line">git config --global user.email &quot;your email&quot;</div></pre></td></tr></table></figure>
+</li>
+<li><p>进入你的项目目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">cd d:/wamp/www/wap              //首先指定到你的项目目录下</div><div class="line">git init</div><div class="line">touch README.md</div><div class="line">git add README.md</div><div class="line">git commit -m &quot;first commit&quot;</div><div class="line">git remote add origin https://github.com/youtname/vscode.git   </div><div class="line">//用你仓库的url,vscode.git中vscode为仓库名称,使用时必须先创建</div><div class="line">git push -u origin master  //提交到你的仓库</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong><em>正式使用</em></strong></p>
+<ul>
+<li><p>提交代码到git<br>回到vs code打开git工作区就会看到所有代码显示在这里<br><img src="http://upload-images.jianshu.io/upload_images/2065390-a262f07bfbd6248a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>点击+号，把所有文件提交到暂存区。<br>然后打开菜单选择–提交已暂存的<br><img src="http://upload-images.jianshu.io/upload_images/2065390-d29fcbab73a224b7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>然后按提示随便在消息框里输入一个消息，再按ctrl+enter提交<br><img src="http://upload-images.jianshu.io/upload_images/2065390-2a14bac73c66427b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>然后把所有暂存的代码push云端，<br><img src="http://upload-images.jianshu.io/upload_images/2065390-3e8449a7a0936e07.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>点击后，会弹出让你输入账号密码，把你托管平台的账号密码输入上去就行了<br>不出问题的话你整个项目就会提交到云端上了。<br>在vs中每次更新代码都会要输入账号密码，方便起见，可以配置一下让GIT记住密码账号。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git config --global credential.helper store   //在Git Bash输入这个命令就可以了</div></pre></td></tr></table></figure>
+</li>
+<li><p>同步代码<br><strong>这里说下平时修改代码后提交到云端的使用，和本地代码和云端同步</strong><br>　　随便打开一个文件，添加一个注释<br><img src="http://upload-images.jianshu.io/upload_images/2065390-0c48e7a94592d088.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>可以看到git图标有一个提示，打开git工作区可以看到就是修改的这个文件<br><img src="http://upload-images.jianshu.io/upload_images/2065390-9f771ddc6682827b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>然后点击右侧的+号，把他暂存起来。<br>再在消息框里输入消息，按ctrl+enter提交暂存<br><img src="http://upload-images.jianshu.io/upload_images/2065390-1131357d55addbd4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>再点击push提交，代码就提交到云端了。<br><img src="http://upload-images.jianshu.io/upload_images/2065390-d9d53c0c5a426050.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>打开 码云就可以看到了。。<br><img src="http://upload-images.jianshu.io/upload_images/2065390-3834f1650889eccf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+</li>
+<li>更新回本地<br>比如当你在家里修改了代码提交到云端后，回到公司只需要用vscode打开项目点击菜单中的pull就可以同步过来了。</li>
+<li>克隆项目<br>打开Git Bash输入以下命令<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd d:/project   //指定存放的目录</div><div class="line">git clone https://github.com/youtname/your repository.git     //你的仓库地址</div></pre></td></tr></table></figure></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhangpu1211.github.io/2017/08/24/hello-world/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="张璞">
@@ -519,14 +703,32 @@
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
           
 
           
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
 
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
           
 
         </nav>
@@ -1214,6 +1416,21 @@
 
 
   
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
 
   
 
