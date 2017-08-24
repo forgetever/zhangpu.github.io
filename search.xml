@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title></title>
+    <url>%2F2017%2F08%2F24%2Fbaidu_verify_T5J6OpbBK2%2F</url>
+    <content type="text"><![CDATA[T5J6OpbBK2]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[vscode中使用git]]></title>
     <url>%2F2017%2F08%2F24%2Fvscode%E4%B8%AD%E4%BD%BF%E7%94%A8git%2F</url>
     <content type="text"><![CDATA[vscode简介VSCode是微软推出的一款轻量编辑器，采取了和VS相同的UI界面，搭配合适的插件可以优化前端开发的体验。布局：左侧是用于展示所要编辑的所有文件和文件夹的文件管理器，依次是资源管理器，搜索，GIT，调试，插件，右侧是打开文件的编辑区域，最多可同时打开三个编辑区域到侧边。在初次使用时如果本地没有安装git会提示先安装git，然后重启vscode。 git下载地址Downloading Git如果安装过程提示无法添加环境变量到path中，则需要将git安装目录下的cmd目录添加到系统的path变量下 配置git 设置全局配置 12git config --global user.name &quot;your name&quot; git config --global user.email &quot;your email&quot; 进入你的项目目录 12345678cd d:/wamp/www/wap //首先指定到你的项目目录下git inittouch README.mdgit add README.mdgit commit -m &quot;first commit&quot;git remote add origin https://github.com/youtname/vscode.git //用你仓库的url,vscode.git中vscode为仓库名称,使用时必须先创建git push -u origin master //提交到你的仓库 正式使用 提交代码到git回到vs code打开git工作区就会看到所有代码显示在这里点击+号，把所有文件提交到暂存区。然后打开菜单选择–提交已暂存的然后按提示随便在消息框里输入一个消息，再按ctrl+enter提交然后把所有暂存的代码push云端，点击后，会弹出让你输入账号密码，把你托管平台的账号密码输入上去就行了不出问题的话你整个项目就会提交到云端上了。在vs中每次更新代码都会要输入账号密码，方便起见，可以配置一下让GIT记住密码账号。 1git config --global credential.helper store //在Git Bash输入这个命令就可以了 同步代码这里说下平时修改代码后提交到云端的使用，和本地代码和云端同步 随便打开一个文件，添加一个注释可以看到git图标有一个提示，打开git工作区可以看到就是修改的这个文件然后点击右侧的+号，把他暂存起来。再在消息框里输入消息，按ctrl+enter提交暂存再点击push提交，代码就提交到云端了。打开 码云就可以看到了。。 更新回本地比如当你在家里修改了代码提交到云端后，回到公司只需要用vscode打开项目点击菜单中的pull就可以同步过来了。 克隆项目打开Git Bash输入以下命令12cd d:/project //指定存放的目录git clone https://github.com/youtname/your repository.git //你的仓库地址]]></content>
