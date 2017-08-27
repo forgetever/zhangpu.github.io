@@ -106,7 +106,7 @@
 <meta property="og:description" content="MAVEN项目对象模型(POM)，可以通过一小段描述信息来管理项目的构建，报告和文档的软件项目管理工具。Maven 除了以程序构建能力为特色之外，还提供高级项目管理工具。由于 Maven 的缺省构建规则有较高的可重用性，所以常常用两三行 Maven 构建脚本就可以构建简单的项目。由于 Maven 的面向项目的方法，许多 Apache Jakarta 项目发文时使用 Maven，而且公司项目采用">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2065390-e9d2ce84ac64fde2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-08-27T02:24:59.696Z">
+<meta property="og:updated_time" content="2017-08-27T02:28:06.776Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="maven安装与aliyun仓库配置">
 <meta name="twitter:description" content="MAVEN项目对象模型(POM)，可以通过一小段描述信息来管理项目的构建，报告和文档的软件项目管理工具。Maven 除了以程序构建能力为特色之外，还提供高级项目管理工具。由于 Maven 的缺省构建规则有较高的可重用性，所以常常用两三行 Maven 构建脚本就可以构建简单的项目。由于 Maven 的面向项目的方法，许多 Apache Jakarta 项目发文时使用 Maven，而且公司项目采用">
@@ -450,15 +450,16 @@
       
         <blockquote>
 <p>MAVEN项目对象模型(POM)，可以通过一小段描述信息来管理项目的构建，报告和文档的软件项目管理工具。Maven 除了以程序构建能力为特色之外，还提供高级项目管理工具。由于 Maven 的缺省构建规则有较高的可重用性，所以常常用两三行 Maven 构建脚本就可以构建简单的项目。由于 Maven 的面向项目的方法，许多 Apache Jakarta 项目发文时使用 Maven，而且公司项目采用 Maven 的比例在持续增长。</p>
-<p>###下载<br><a href="http://maven.apache.org/download.cgi" target="_blank" rel="external">下载地址</a>,选择对应操作系统版本，linux就是第一个啦，win就是第二个。</p>
 </blockquote>
+<p>###下载<br><a href="http://maven.apache.org/download.cgi" target="_blank" rel="external">下载地址</a>,选择对应操作系统版本，linux就是第一个啦，win就是第二个。</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/2065390-e9d2ce84ac64fde2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br>linux解压命令<code>tar xzvf apache-maven-3.5.0-bin.tar.gz</code><br>window直接解压到你想要的目录即可</p>
 <p>###安装<br>让我们看看官方文档怎么说<br>Alternatively use your preferred archive extraction tool.</p>
 <ul>
 <li>Add the bin directory of the created directory apache-maven-3.5.0 to the PATH environment variable</li>
-<li>Confirm with mvn -v in a new shell. The result should look similar to<br>简单来说就是讲路径添加到系统的环境变量中，然后用<code>mvn -v</code>来检测是否成功。在此我们默认各位的java环境已经配置成功！<br>windows:在path下添加<code>C:\Program Files\apache-maven-3.5.0\bin</code><br>linux下添加环境变量方法:<code>export PATH=/opt/apache-maven-3.5.0/bin:$PATH</code><br>可选配置：<br>MAVEN_OPTS环境变量：<br>该变量包含用于启动运行Maven的JVM的参数，可用于向Maven提供其他选项。可以使用值-Xms256m -Xmx512m定义JVM内存设置<br>###添加阿里云镜像和修改本地仓库位置<br>打开maven文件夹下conf/setting.xml，查找<strong><em>mirror</em></strong>和<strong><em>localRepository</em></strong>关键字,将以下代码复制到对应位置。最后复制一份setting.xml到你新修改的本地仓库<code>E:\repository</code><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;mirrors&gt;</div><div class="line">  	&lt;mirror&gt;</div><div class="line">        &lt;id&gt;nexus-aliyun&lt;/id&gt;</div><div class="line">        &lt;mirrorOf&gt;*&lt;/mirrorOf&gt;</div><div class="line">        &lt;name&gt;Nexus aliyun&lt;/name&gt;</div><div class="line">        &lt;url&gt;http://maven.aliyun.com/nexus/content/groups/public&lt;/url&gt;</div><div class="line">    &lt;/mirror&gt; </div><div class="line">&lt;/mirrors&gt;</div></pre></td></tr></table></figure>
-</li>
+<li>Confirm with mvn -v in a new shell. The result should look similar to</li>
 </ul>
+<p>简单来说就是讲路径添加到系统的环境变量中，然后用<code>mvn -v</code>来检测是否成功。在此我们默认各位的java环境已经配置成功！<br>windows:在path下添加<code>C:\Program Files\apache-maven-3.5.0\bin</code><br>linux下添加环境变量方法:<code>export PATH=/opt/apache-maven-3.5.0/bin:$PATH</code><br>可选配置：<br>MAVEN_OPTS环境变量：<br>该变量包含用于启动运行Maven的JVM的参数，可用于向Maven提供其他选项。可以使用值-Xms256m -Xmx512m定义JVM内存设置</p>
+<p>###添加阿里云镜像和修改本地仓库位置<br>打开maven文件夹下conf/setting.xml，查找<strong><em>mirror</em></strong>和<strong><em>localRepository</em></strong>关键字,将以下代码复制到对应位置。最后复制一份setting.xml到你新修改的本地仓库<code>E:\repository</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;mirrors&gt;</div><div class="line">  	&lt;mirror&gt;</div><div class="line">        &lt;id&gt;nexus-aliyun&lt;/id&gt;</div><div class="line">        &lt;mirrorOf&gt;*&lt;/mirrorOf&gt;</div><div class="line">        &lt;name&gt;Nexus aliyun&lt;/name&gt;</div><div class="line">        &lt;url&gt;http://maven.aliyun.com/nexus/content/groups/public&lt;/url&gt;</div><div class="line">    &lt;/mirror&gt; </div><div class="line">&lt;/mirrors&gt;</div></pre></td></tr></table></figure></p>
 <p><code>&lt;localRepository&gt;E:\repository&lt;/localRepository&gt;</code></p>
 
       
