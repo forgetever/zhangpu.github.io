@@ -79,7 +79,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="mysql,phpstudy," />
+  <meta name="keywords" content="Hadoop,hdfs," />
 
 
 
@@ -97,18 +97,36 @@
 
 
 
-<meta name="description" content="最近学习java的时候建数据库，用到了create_time和update_time，我想设置成current_time，但是在mysql5,7之前貌似不支持这个操作，没办法那就升级一下吧！  下载地址首先当然是现在了，地址在这里,你可能看到它会提示你登录，这么麻烦呢！肯定不适合我这个懒人了，往下看，果然有提示No thanks, just start my download.，点击下载就行啦。">
-<meta name="keywords" content="mysql,phpstudy">
+<meta name="description" content="本篇文章将从头开始介绍Hadoop大数据平台的一系列搭建工作，主要是搭建的具体操作步骤，思想方面涉及甚少，可以自行补充 虚拟机下载安装我使用的是VMware station12，下载地址为链接：http://pan.baidu.com/s/1geX11pL 密码：uylp本软件为注册软件现提供一个注册码AV5R2-8LW53-484RP-H5YQZ-XU8RF，大家也可以自行百度。 centos">
+<meta name="keywords" content="Hadoop,hdfs">
 <meta property="og:type" content="article">
-<meta property="og:title" content="phpstudy升级mysql5.7以及遇到的问题汇总">
-<meta property="og:url" content="https://zhangpu1211.github.io/2017/09/05/phpstudy升级mysql5-7以及遇到的问题汇总/index.html">
+<meta property="og:title" content="从零开始Hadoop集群环境搭建">
+<meta property="og:url" content="https://zhangpu1211.github.io/2017/09/10/从零开始Hadoop集群环境搭建/index.html">
 <meta property="og:site_name" content="听城">
-<meta property="og:description" content="最近学习java的时候建数据库，用到了create_time和update_time，我想设置成current_time，但是在mysql5,7之前貌似不支持这个操作，没办法那就升级一下吧！  下载地址首先当然是现在了，地址在这里,你可能看到它会提示你登录，这么麻烦呢！肯定不适合我这个懒人了，往下看，果然有提示No thanks, just start my download.，点击下载就行啦。">
+<meta property="og:description" content="本篇文章将从头开始介绍Hadoop大数据平台的一系列搭建工作，主要是搭建的具体操作步骤，思想方面涉及甚少，可以自行补充 虚拟机下载安装我使用的是VMware station12，下载地址为链接：http://pan.baidu.com/s/1geX11pL 密码：uylp本软件为注册软件现提供一个注册码AV5R2-8LW53-484RP-H5YQZ-XU8RF，大家也可以自行百度。 centos">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-05T03:08:06.730Z">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2065390-c8ada8ff6b6af3be.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2065390-ca2bbe7ec08e0534.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2065390-355d06a32d8e9303.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2065390-024076e190f91388.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2065390-b84a75536fb90437.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2065390-eaad752cdb93826b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2065390-8c6aca7aa21dbd55.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2065390-5eb8ff64cdc2590f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2065390-8475c9fae79c415e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2065390-a935b7b29f6251a2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2065390-61e440ea012f7776.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2065390-b1b4e3599d803a32.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2065390-09a61c18e10d0ea8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2065390-c61de5d0574f2d7b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2065390-3620d5ba6df782c3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2065390-bc5ee303dbf594a1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2065390-f9bb604aed19a2e3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-09-10T05:43:41.999Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="phpstudy升级mysql5.7以及遇到的问题汇总">
-<meta name="twitter:description" content="最近学习java的时候建数据库，用到了create_time和update_time，我想设置成current_time，但是在mysql5,7之前貌似不支持这个操作，没办法那就升级一下吧！  下载地址首先当然是现在了，地址在这里,你可能看到它会提示你登录，这么麻烦呢！肯定不适合我这个懒人了，往下看，果然有提示No thanks, just start my download.，点击下载就行啦。">
+<meta name="twitter:title" content="从零开始Hadoop集群环境搭建">
+<meta name="twitter:description" content="本篇文章将从头开始介绍Hadoop大数据平台的一系列搭建工作，主要是搭建的具体操作步骤，思想方面涉及甚少，可以自行补充 虚拟机下载安装我使用的是VMware station12，下载地址为链接：http://pan.baidu.com/s/1geX11pL 密码：uylp本软件为注册软件现提供一个注册码AV5R2-8LW53-484RP-H5YQZ-XU8RF，大家也可以自行百度。 centos">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2065390-c8ada8ff6b6af3be.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -138,13 +156,13 @@
 
 
 
-  <link rel="canonical" href="https://zhangpu1211.github.io/2017/09/05/phpstudy升级mysql5-7以及遇到的问题汇总/"/>
+  <link rel="canonical" href="https://zhangpu1211.github.io/2017/09/10/从零开始Hadoop集群环境搭建/"/>
 
 
 
 
 
-  <title>phpstudy升级mysql5.7以及遇到的问题汇总 | 听城</title>
+  <title>从零开始Hadoop集群环境搭建 | 听城</title>
   
 
 
@@ -335,7 +353,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhangpu1211.github.io/2017/09/05/phpstudy升级mysql5-7以及遇到的问题汇总/">
+    <link itemprop="mainEntityOfPage" href="https://zhangpu1211.github.io/2017/09/10/从零开始Hadoop集群环境搭建/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="听城">
@@ -352,7 +370,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">phpstudy升级mysql5.7以及遇到的问题汇总</h1>
+          <h1 class="post-title" itemprop="name headline">从零开始Hadoop集群环境搭建</h1>
         
 
         <div class="post-meta">
@@ -364,8 +382,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-05T11:07:05+08:00">
-                2017-09-05
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-10T13:42:11+08:00">
+                2017-09-10
               </time>
             
 
@@ -387,8 +405,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/tools/" itemprop="url" rel="index">
-                    <span itemprop="name">工具</span>
+                  <a href="/categories/program/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
                   </a>
                 </span>
 
@@ -405,9 +423,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/09/05/phpstudy升级mysql5-7以及遇到的问题汇总/#comments" itemprop="discussionUrl">
+                <a href="/2017/09/10/从零开始Hadoop集群环境搭建/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/09/05/phpstudy升级mysql5-7以及遇到的问题汇总/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/09/10/从零开始Hadoop集群环境搭建/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -415,7 +433,7 @@
 
           
           
-             <span id="/2017/09/05/phpstudy升级mysql5-7以及遇到的问题汇总/" class="leancloud_visitors" data-flag-title="phpstudy升级mysql5.7以及遇到的问题汇总">
+             <span id="/2017/09/10/从零开始Hadoop集群环境搭建/" class="leancloud_visitors" data-flag-title="从零开始Hadoop集群环境搭建">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -447,26 +465,88 @@
 
       
         <blockquote>
-<p>最近学习java的时候建数据库，用到了create_time和update_time，我想设置成current_time，但是在mysql5,7之前貌似不支持这个操作，没办法那就升级一下吧！</p>
+<p>本篇文章将从头开始介绍Hadoop大数据平台的一系列搭建工作，主要是搭建的具体操作步骤，思想方面涉及甚少，可以自行补充</p>
+<h4 id="虚拟机下载安装"><a href="#虚拟机下载安装" class="headerlink" title="虚拟机下载安装"></a>虚拟机下载安装</h4><p>我使用的是VMware station12，下载地址为链接：<a href="http://pan.baidu.com/s/1geX11pL" target="_blank" rel="external">http://pan.baidu.com/s/1geX11pL</a> 密码：uylp<br>本软件为注册软件现提供一个注册码<code>AV5R2-8LW53-484RP-H5YQZ-XU8RF</code>，大家也可以自行百度。</p>
+<h4 id="centos下载"><a href="#centos下载" class="headerlink" title="centos下载"></a>centos下载</h4><p>因为工作中常用的为不带可视化界面的版本，现提供一个centos6.8_64下载，地址<a href="http://pan.baidu.com/s/1cEpvo6" target="_blank" rel="external">点我</a></p>
+<h4 id="centos安装"><a href="#centos安装" class="headerlink" title="centos安装"></a>centos安装</h4><p>打开安装好的VMware station，右键选择新建虚拟机，选择典型安装。<br>选择稍后安装操作系统，点击下一步<br><img src="http://upload-images.jianshu.io/upload_images/2065390-c8ada8ff6b6af3be.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>选择linux操作系统，版本为CentOS64位<br><img src="http://upload-images.jianshu.io/upload_images/2065390-ca2bbe7ec08e0534.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>输入计算机名称以及你想要安装的位置<br><img src="http://upload-images.jianshu.io/upload_images/2065390-355d06a32d8e9303.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>指定磁盘容量，这里要说明的是你选择的20G并不会一下占用你20G的硬盘空间，而是跟随你虚拟机大小进行变化的<br><img src="http://upload-images.jianshu.io/upload_images/2065390-024076e190f91388.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>点击完成即可<br><img src="http://upload-images.jianshu.io/upload_images/2065390-b84a75536fb90437.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>此时你会发现在你VMwarestation左面有了安装的虚拟机，现在需要做两件事。</p>
+<ul>
+<li>设定虚拟机镜像位置</li>
+</ul>
 </blockquote>
-<h4 id="下载地址"><a href="#下载地址" class="headerlink" title="下载地址"></a>下载地址</h4><p>首先当然是现在了，<a href="https://dev.mysql.com/downloads/file/?id=467269" target="_blank" rel="external">地址在这里</a>,你可能看到它会提示你登录，这么麻烦呢！肯定不适合我这个懒人了，往下看，果然有提示<strong><a href="https://dev.mysql.com/get/archives/mysql-5.7/mysql-5.7.17-winx64.zip" target="_blank" rel="external">No thanks, just start my download.</a></strong>，点击下载就行啦。</p>
-<h4 id="升级mysql版本"><a href="#升级mysql版本" class="headerlink" title="升级mysql版本"></a>升级mysql版本</h4><ul>
-<li>备份原来 phpStudy 中 MySQL 安装目录，这个备份因人而异，不过最关键的还是你的本地数据库了，最保险的做法就是导出sql文件，升级完成后在导入</li>
-<li>解压下载的mysql文件，将内容复制到phpstudy中mysql目录下</li>
-<li>复制一份 my-default.ini ，重命名为 my.ini</li>
-<li><p>打开my.ini,增加如下内容，这里的路径为你原来phpstudy中mysql的路径</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">basedir=&quot;D:/phpStudy/MySQL/&quot;</div><div class="line">datadir=&quot;D:/phpStudy/MySQL/data/&quot;</div><div class="line">character-set-server=utf8</div><div class="line">port=3306</div></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/2065390-eaad752cdb93826b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<ul>
+<li>更改电脑虚拟化设置。有的电脑并没有开启Intel虚拟化，因此不能安装64位虚拟机。检测的方法是点击开启此虚拟机，如果进入安装界面则证明你的虚拟化是打开的，否则会报错，这时你需要开机进入BIOS，Advanced-CPU Setup将Intel Virtualization Technology和VT-d打开<br><img src="http://upload-images.jianshu.io/upload_images/2065390-8c6aca7aa21dbd55.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>设置完成后选择开启此虚拟机，进入系统安装界面。这里需要注意的就是skip测试你的安装媒体。剩下的都是可视化的安装，自己选择就可以。<br><img src="http://upload-images.jianshu.io/upload_images/2065390-5eb8ff64cdc2590f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><h4 id="Linux环境配置"><a href="#Linux环境配置" class="headerlink" title="Linux环境配置"></a>Linux环境配置</h4></li>
+<li><p>修改Linux的主机名<br>进入<code>vi /etc/sysconfig/network</code>,修改内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">NETWORKING=yes</div><div class="line">HOSTNAME=node-1</div></pre></td></tr></table></figure>
 </li>
-<li><p>添加bin目录到系统环境变量path中</p>
-</li>
-<li>在mysql的bin目录下打开cmd，执行如下操作<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mysqld --initialize</div><div class="line">mysqld -install</div></pre></td></tr></table></figure>
+<li><p>修改IP地址<br>如果你此时执行ifconfig命令你会发现并没有常见的etho网卡，这时因为系统默认没有启动。需要将配置文件改成如下内容。首先进入配置文件<code>vi /etc/sysconfig/network-scripts/ifcfg-eth0</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">DEVICE=eth0</div><div class="line">ONBOOT=yes</div><div class="line">BOOTPROTO=static</div><div class="line">TYPE=Ethernet</div><div class="line">IPADDR=192.168.213.100</div><div class="line">NETMASK=255.255.255.0</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>至此mysql升级结束，下面来填坑</p>
-<h4 id="mysql安装后的问题"><a href="#mysql安装后的问题" class="headerlink" title="mysql安装后的问题"></a>mysql安装后的问题</h4><ul>
-<li>打开后密码不正确<br>尝试修改 root 用户密码：<br>打开 my.ini，找到 [mysqld]，在下面添加：<code>skip-grant-tables</code>(此参数用于忘记mysql密码)<br>打开cmd，输入<code>mysql -u root -p</code>，会让你输入密码，直接回车即可。现在可以进入mysql了，那么我们可以修改默认密码。执行如下语句<code>update user set authentication_string=password(&quot;123456&quot;) where user=&quot;root&quot;;</code>5.7.11之前的版本用这个<code>update user set password=password(&quot;123456&quot;) where user=&quot;root&quot;;</code>密码修改完成。<strong>进入my.ini删除<code>skip-grant-tables</code></strong></li>
-<li>但是在你用mysqlfront或者Navicat登录的时候会提示你密码已经过期<br>dmd进入mysql后，直接输入下面的命令(这个时候你输入刚才设置的密码)<br><code>SET PASSWORD = PASSWORD(&#39;123456&#39;);</code><br>然后你会发现navicat可以连接了</li>
+<p>这里需要注意的是ip地址的设置，首先你需要查看你的网络连接方式，我采用默认的NAT模式，从下图可以看到子网地址为192.168.213.0，因此我设置的为192.168.213.100。另外如果你想让虚拟机联网需要设置gateway和dns。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2065390-8475c9fae79c415e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>配置好后用<code>service network restart</code>重启网络服务，用<code>ifconfig</code>可以查看是否配置成功。然后可以在Windows上ping该ip查看是否可以ping通。ping通后就可以使用putty或者SecureCRT连接虚拟机了。</p>
+<ul>
+<li>配置主机名和IP地址的映射关系<br><code>vi /etc/hosts</code>打开hosts文件，新增一行<code>192.168.213.100  node-1</code></li>
+<li>关闭防火墙<br>查看防火墙状态<br>service iptables status<br>关闭防火墙<br>service iptables stop<br>设置防火墙开机不启动<br>chkconfig iptables off</li>
 </ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/2065390-a935b7b29f6251a2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>最后reboot或者通过<code>hostname node-1</code> 以及<code>exit</code>,使我们配置的主机名生效</p>
+<ul>
+<li>删除Mac地址与网卡映射文件<br>我们想将这个虚拟机作为模板机，为了避免以后Mac地址冲突，因此要删除Mac地址与网卡映射文件，以后启动机器的时候会自动生成。<br><code>rm -rf /etc/udev/rules.d/70-persistent-net.rules</code><br>然后用<code>halt</code>关机<h4 id="创建克隆机"><a href="#创建克隆机" class="headerlink" title="创建克隆机"></a>创建克隆机</h4>做大数据肯定不可能只有一个虚拟机，我们现在用配置好的这台机器，克隆出几台虚拟机出来。</li>
+<li>选择模板机，然后点击右键 –&gt; 选择Manage –&gt; clone -&gt;创建一个完整的克隆 –&gt;<br>-&gt;配置机器的名字和存放位置 </li>
+<li>开启虚拟机之前一定要生成一个新的mac地址</li>
+<li>开启虚拟机，修改其主机名和ip地址<br>如果在执行<code>service network restart</code>命令时出现以下错误，则可能是没有删除模板机Mac地址与网卡映射文件，注意这个文件每次启动都会自动生成的。解决方法是<code>rm -rf /etc/udev/rules.d/70-persistent-net.rules</code>删除该文件然后重启<br>都修改完成后可以用一台虚拟机依次ping其它虚拟机，可以ping通即可<h4 id="修改hosts文件"><a href="#修改hosts文件" class="headerlink" title="修改hosts文件"></a>修改hosts文件</h4>在101机器上修改hosts文件，完成主机名和ip地址映射<br><img src="http://upload-images.jianshu.io/upload_images/2065390-61e440ea012f7776.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></li>
+</ul>
+<h4 id="ssh免密码登录"><a href="#ssh免密码登录" class="headerlink" title="ssh免密码登录"></a>ssh免密码登录</h4><ul>
+<li>在第一台机器上生成一对钥匙，一个公钥，一个私钥<code>ssh-keygen –t rsa</code>执行上面的命令后，输入四个回车</li>
+<li>将公钥拷贝到希望名登录的机器<code>ssh-copy-id 192.168.213.102</code>执行上面的命令第一次要输入第二台机器的密码</li>
+<li>然后执行scp操作就不需要输入密码了<code>scp /etc/hosts root@192.168.213.102:/etc</code>，现在可以将修改好的hosts文件发送到其他具有公钥的机器。<br>注意这种免密码登录是单向的，如果想相互免密码登录则需要在每一台机器上都生成一个公钥和一个私钥。<h4 id="Hadoop集群规划"><a href="#Hadoop集群规划" class="headerlink" title="Hadoop集群规划"></a>Hadoop集群规划</h4>现在我们有四台机器，分别为node-1,node-2,node-3,node-4，我们要做成下图形式的架构。第一台作为主节点，其他三台作为从节点<br><img src="http://upload-images.jianshu.io/upload_images/2065390-b1b4e3599d803a32.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><h4 id="Java安装"><a href="#Java安装" class="headerlink" title="Java安装"></a>Java安装</h4>将安装包上传到虚拟机上</li>
+<li>安装Java<ul>
+<li>创建文件夹<code>mkdir /usr/java</code></li>
+<li>解压<code>tar -zxvf jdk.tar.gz -C /usr/java</code></li>
+<li>添加环境变量<br>进入文件<code>vi /etc/profile</code>，按G到文件末尾，按o插入一行，加入下面语句<br><code>export JAVA_HOME=/usr/java/jdk1.8.0_111</code><br><code>export PATH=$PATH:$JAVA_HOME/bin</code><br>执行<code>source /etc/profile</code>重新加载环境变量</li>
+<li>若需要传到其他虚拟机上则<br><code>scp –r /usr/java/ node-2:/usr</code><br><code>scp  /etc/profile node-2:/etc</code></li>
+</ul>
+</li>
+</ul>
+<h4 id="Hadoop安装"><a href="#Hadoop安装" class="headerlink" title="Hadoop安装"></a>Hadoop安装</h4><ul>
+<li><p>解压Hadoop<br><code>mkdir /bigdata</code><br><code>tar -zxvf hadoop-2.6.5.tar.gz -C /bigdata/</code></p>
+</li>
+<li><p>在Hadoop安装包目录下有几个比较重要的目录<br>sbin : 启动或停止Hadoop相关服务的脚本<br>bin ：对Hadoop相关服务（HDFS,YARN）进行操作的脚本<br>etc : Hadoop的配置文件目录<br>share ：Hadoop的依赖jar包和文档，文档可以被删掉<br>lib ：Hadoop的本地库（对数据进行压缩解压缩功能的）</p>
+</li>
+<li>修改配置文件<br>进入到Hadoop的etc目录下<br><code>cd /bigdata/hadoop-2.6.5/etc/hadoop</code></li>
+</ul>
+<p>修改第1个配置文<br><code>vi hadoop-env.sh</code><br><code>export JAVA_HOME=/usr/java/jdk1.8.0_111</code></p>
+<p>修改第2个配置文件<br><code>vi core-site.xml</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;configuration&gt;</div><div class="line">  &lt;!-- 配置hdfs的namenode（老大）的地址 --&gt;</div><div class="line">  &lt;property&gt;</div><div class="line">    &lt;name&gt;fs.defaultFS&lt;/name&gt;</div><div class="line">    &lt;value&gt;hdfs://node-1:9000&lt;/value&gt;</div><div class="line">  &lt;/property&gt;</div><div class="line"></div><div class="line">  &lt;!-- 配置Hadoop运行时产生数据的存储目录，不是临时的数据 --&gt;</div><div class="line">  &lt;property&gt;</div><div class="line">    &lt;name&gt;hadoop.tmp.dir&lt;/name&gt;</div><div class="line">    &lt;value&gt;/bigdata/hadoop-2.6.5/tmp&lt;/value&gt;</div><div class="line">  &lt;/property&gt;</div><div class="line">&lt;/configuration&gt;</div></pre></td></tr></table></figure></p>
+<p>修改第3个配置文件<br><code>vi hdfs-site.xml</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;configuration&gt;</div><div class="line"> &lt;!-- 指定HDFS存储数据的副本数据量 --&gt;</div><div class="line">  &lt;property&gt;</div><div class="line">    &lt;name&gt;dfs.replication&lt;/name&gt;</div><div class="line">    &lt;value&gt;3&lt;/value&gt;</div><div class="line">  &lt;/property&gt;</div><div class="line">&lt;/configuration&gt;</div></pre></td></tr></table></figure></p>
+<p>修改第4个配置文件<br><code>mv mapred-site.xml.template mapred-site.xml</code><br><code>vi mapred-site.xml</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;configuration&gt;</div><div class="line">  &lt;!-- 指定mapreduce编程模型运行在yarn上  --&gt;</div><div class="line">  &lt;property&gt;</div><div class="line">    &lt;name&gt;mapreduce.framework.name&lt;/name&gt;</div><div class="line">    &lt;value&gt;yarn&lt;/value&gt;</div><div class="line">  &lt;/property&gt;</div><div class="line">&lt;/configuration&gt;</div></pre></td></tr></table></figure></p>
+<p>修改第5个配置文件<br><code>vi yarn-site.xml</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;configuration&gt;</div><div class="line">  &lt;!-- 指定yarn的老大（ResourceManager的地址） --&gt;</div><div class="line">  &lt;property&gt;</div><div class="line">    &lt;name&gt;yarn.resourcemanager.hostname&lt;/name&gt;</div><div class="line">    &lt;value&gt;node-1&lt;/value&gt;</div><div class="line">  &lt;/property&gt;</div><div class="line">  </div><div class="line">  &lt;!-- mapreduce执行shuffle时获取数据的方式 --&gt;</div><div class="line">  &lt;property&gt;</div><div class="line">    &lt;name&gt;yarn.nodemanager.aux-services&lt;/name&gt;</div><div class="line">    &lt;value&gt;mapreduce_shuffle&lt;/value&gt;</div><div class="line">  &lt;/property&gt;</div><div class="line">&lt;/configuration&gt;</div></pre></td></tr></table></figure></p>
+<p>第6个配置文件slaves<br><code>vi slaves</code><br>原来的localhost要删掉<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">node-2</div><div class="line">node-3</div><div class="line">node-4</div></pre></td></tr></table></figure></p>
+<p>将配置好的Hadoop安装包拷贝到其他服务上<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">scp -r /bigdata  node-2:/</div><div class="line">scp -r /bigdata  node-3:/</div><div class="line">scp -r /bigdata  node-4:/</div></pre></td></tr></table></figure></p>
+<p>在第一台机器（NameNode所在的机器）上对hdfs进行初始化（格式化HDFS）<br><code>cd /bigdata/hadoop-2.6.5/bin/</code><br><code>./hdfs namenode -format</code></p>
+<p>配置自己到自己的免密码登录，输入当前机器的密码<br><code>ssh-copy-id node-1</code></p>
+<p>在第一台机器（NameNode所在的机器）上对hdfs进行初始化（格式化HDFS）<br><code>cd /bigdata/hadoop-2.6.5/bin/</code><br><code>./hdfs namenode -format</code><br>格式化成功的标志是出现以下提示<br><img src="http://upload-images.jianshu.io/upload_images/2065390-09a61c18e10d0ea8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br>配置自己到自己的免密码登录，输入当前机器的密码<br>ssh-copy-id node-1</p>
+<h4 id="启动并测试Hadoop"><a href="#启动并测试Hadoop" class="headerlink" title="启动并测试Hadoop"></a>启动并测试Hadoop</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cd /bigdata/hadoop-2.6.5/sbin/</div><div class="line">./start-dfs.sh</div><div class="line">./start-yarn.sh</div></pre></td></tr></table></figure>
+<p>可以使用jps检查进程是否存在</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2065390-c61de5d0574f2d7b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="node1"><br><img src="http://upload-images.jianshu.io/upload_images/2065390-3620d5ba6df782c3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="node2"><br>也可以访问网页测试<br>访问hdfs的管理界面<br>192.168.213.101:50070</p>
+<p>访问yarn的管理界面<br>192.168.213.101:8088</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2065390-bc5ee303dbf594a1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br>关闭hdfs/yarn服务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">./stop-dfs.sh</div><div class="line">./stop-yarn.sh</div></pre></td></tr></table></figure></p>
+<h4 id="上传文件到HDFS上"><a href="#上传文件到HDFS上" class="headerlink" title="上传文件到HDFS上"></a>上传文件到HDFS上</h4><p>上传文件<br><code>/bigdata/hadoop-2.6.5/bin/hdfs dfs -put /root/install.log hdfs://node-1:9000/</code><br>查看文件信息<br><code>/bigdata/hadoop-2.6.5/bin/hdfs dfs -ls hdfs://node-1:9000/</code></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2065390-f9bb604aed19a2e3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h4 id="HDFS动态扩容"><a href="#HDFS动态扩容" class="headerlink" title="HDFS动态扩容"></a>HDFS动态扩容</h4><p>查看现在DataNode情况可以在Hadoop的bin目录下执行<code>./hdfs dfsadmin -report</code>，可以看到存活的DataNode。现在为3个。<br>下面为扩容的具体步骤：</p>
+<ul>
+<li>准备一台新的服务器（最好是跟原集群的机器相同配置）</li>
+<li>为新的服务器准备系统环境（主机名、IP地址、防火墙、JDK环境、hosts文件）</li>
+<li>将新的服务器连入原集群网络（测试是否可以ping通）</li>
+<li>从原集群中拷贝一个hadoop的安装目录到新节点上，并且删除原datanode的工作目录（这里配置的为tmp目录）</li>
+<li>修改/bigdata/hadoop-2.6.5/etc/hadoop/slaves 文件，加入新节点的主机名</li>
+<li>在新节点上用命令：hadoop-daemon.sh start datanode 启动datanode，就会自动加入集群</li>
+<li>重启start-dfs,start-yarn<h4 id="hadoop集群恢复解决方案"><a href="#hadoop集群恢复解决方案" class="headerlink" title="hadoop集群恢复解决方案"></a>hadoop集群恢复解决方案</h4></li>
+<li>在每一台机器上用命令杀掉所有java进程：  killall java</li>
+<li>在每一台机器上删掉hadoop安装目录中的tmp文件夹</li>
+<li>在node-1上格式化namenode：   hadoop namenode -format</li>
+<li>在node-1上执行脚本来启动整个集群：  start-dfs.sh</li>
+</ul>
+<p>补充：关闭HDFS集群的命令：在node-1上：  stop-dfs.sh<br>关闭YARN集群的命令：在node-1上：  stop-yarn.sh</p>
 
       
     </div>
@@ -513,9 +593,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/mysql/" rel="tag"># mysql</a>
+            <a href="/tags/Hadoop/" rel="tag"># Hadoop</a>
           
-            <a href="/tags/phpstudy/" rel="tag"># phpstudy</a>
+            <a href="/tags/hdfs/" rel="tag"># hdfs</a>
           
         </div>
       
@@ -528,8 +608,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/08/27/maven安装与aliyun仓库配置/" rel="next" title="maven安装与aliyun仓库配置">
-                <i class="fa fa-chevron-left"></i> maven安装与aliyun仓库配置
+              <a href="/2017/09/05/Matplotlib-绘3D图/" rel="next" title="Matplotlib 绘3D图">
+                <i class="fa fa-chevron-left"></i> Matplotlib 绘3D图
               </a>
             
           </div>
@@ -537,10 +617,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/09/05/Matplotlib-绘2D图/" rel="prev" title="Matplotlib 绘2D图">
-                Matplotlib 绘2D图 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -776,7 +852,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#下载地址"><span class="nav-number">1.</span> <span class="nav-text">下载地址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#升级mysql版本"><span class="nav-number">2.</span> <span class="nav-text">升级mysql版本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mysql安装后的问题"><span class="nav-number">3.</span> <span class="nav-text">mysql安装后的问题</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#虚拟机下载安装"><span class="nav-number">1.</span> <span class="nav-text">虚拟机下载安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#centos下载"><span class="nav-number">2.</span> <span class="nav-text">centos下载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#centos安装"><span class="nav-number">3.</span> <span class="nav-text">centos安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Linux环境配置"><span class="nav-number">4.</span> <span class="nav-text">Linux环境配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建克隆机"><span class="nav-number">5.</span> <span class="nav-text">创建克隆机</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改hosts文件"><span class="nav-number">6.</span> <span class="nav-text">修改hosts文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ssh免密码登录"><span class="nav-number">7.</span> <span class="nav-text">ssh免密码登录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Hadoop集群规划"><span class="nav-number">8.</span> <span class="nav-text">Hadoop集群规划</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Java安装"><span class="nav-number">9.</span> <span class="nav-text">Java安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Hadoop安装"><span class="nav-number">10.</span> <span class="nav-text">Hadoop安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#启动并测试Hadoop"><span class="nav-number">11.</span> <span class="nav-text">启动并测试Hadoop</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#上传文件到HDFS上"><span class="nav-number">12.</span> <span class="nav-text">上传文件到HDFS上</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HDFS动态扩容"><span class="nav-number">13.</span> <span class="nav-text">HDFS动态扩容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#hadoop集群恢复解决方案"><span class="nav-number">14.</span> <span class="nav-text">hadoop集群恢复解决方案</span></a></li></ol></div>
             
 
           </div>
@@ -938,9 +1014,9 @@ var jiathis_config={
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'https://zhangpu1211.github.io/2017/09/05/phpstudy升级mysql5-7以及遇到的问题汇总/';
-          this.page.identifier = '2017/09/05/phpstudy升级mysql5-7以及遇到的问题汇总/';
-          this.page.title = 'phpstudy升级mysql5.7以及遇到的问题汇总';
+          this.page.url = 'https://zhangpu1211.github.io/2017/09/10/从零开始Hadoop集群环境搭建/';
+          this.page.identifier = '2017/09/10/从零开始Hadoop集群环境搭建/';
+          this.page.title = '从零开始Hadoop集群环境搭建';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://zhangpu.disqus.com/embed.js';
