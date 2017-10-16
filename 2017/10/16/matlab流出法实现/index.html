@@ -79,7 +79,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="matlab," />
 
 
 
@@ -97,16 +97,18 @@
 
 
 
-<meta name="description" content="有一天会骄傲那些难熬的时光，可以轻轻的回答我很好">
-<meta property="og:type" content="website">
-<meta property="og:title" content="听城">
-<meta property="og:url" content="https://zhangpu1211.github.io/tags/maven/index.html">
+<meta name="description" content="留出法(hold-out)方法：直接将数据集D划分为两个互斥的集合，其中一个集合作为训练集S，另一个作为测试集T，即.在S上训练出模型后，用T来评估其作为测试误差，作为对泛化误差的估计。 以二分类任务为例，假定D包含1000个样本，将其划分为S包含700个样本，T包含300个样本，用S进行训练，如果模型在T上有90个样本分类错误，那么其错误率为（90/300）*100%=30%，精度为1-30%=">
+<meta name="keywords" content="matlab">
+<meta property="og:type" content="article">
+<meta property="og:title" content="matlab流出法实现">
+<meta property="og:url" content="https://zhangpu1211.github.io/2017/10/16/matlab流出法实现/index.html">
 <meta property="og:site_name" content="听城">
-<meta property="og:description" content="有一天会骄傲那些难熬的时光，可以轻轻的回答我很好">
+<meta property="og:description" content="留出法(hold-out)方法：直接将数据集D划分为两个互斥的集合，其中一个集合作为训练集S，另一个作为测试集T，即.在S上训练出模型后，用T来评估其作为测试误差，作为对泛化误差的估计。 以二分类任务为例，假定D包含1000个样本，将其划分为S包含700个样本，T包含300个样本，用S进行训练，如果模型在T上有90个样本分类错误，那么其错误率为（90/300）*100%=30%，精度为1-30%=">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-10-16T01:36:55.611Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="听城">
-<meta name="twitter:description" content="有一天会骄傲那些难熬的时光，可以轻轻的回答我很好">
+<meta name="twitter:title" content="matlab流出法实现">
+<meta name="twitter:description" content="留出法(hold-out)方法：直接将数据集D划分为两个互斥的集合，其中一个集合作为训练集S，另一个作为测试集T，即.在S上训练出模型后，用T来评估其作为测试误差，作为对泛化误差的估计。 以二分类任务为例，假定D包含1000个样本，将其划分为S包含700个样本，T包含300个样本，用S进行训练，如果模型在T上有90个样本分类错误，那么其错误率为（90/300）*100%=30%，精度为1-30%=">
 
 
 
@@ -136,13 +138,13 @@
 
 
 
-  <link rel="canonical" href="https://zhangpu1211.github.io/tags/maven/"/>
+  <link rel="canonical" href="https://zhangpu1211.github.io/2017/10/16/matlab流出法实现/"/>
 
 
 
 
 
-  <title>标签: maven | 听城</title>
+  <title>matlab流出法实现 | 听城</title>
   
 
 
@@ -161,7 +163,7 @@
     
   
 
-  <div class="container sidebar-position-right ">
+  <div class="container sidebar-position-right page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -319,54 +321,254 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>maven<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhangpu1211.github.io/2017/10/16/matlab流出法实现/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="听城">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="听城">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2017/08/27/maven安装与aliyun仓库配置/" itemprop="url">
-              
-                <span itemprop="name">maven安装与aliyun仓库配置</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">matlab流出法实现</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-08-27T10:23:24+08:00"
-              content="2017-08-27" >
-          08-27
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-16T09:35:19+08:00">
+                2017-10-16
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/16/matlab流出法实现/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/10/16/matlab流出法实现/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/10/16/matlab流出法实现/" class="leancloud_visitors" data-flag-title="matlab流出法实现">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>留出法(hold-out)<br>方法：直接将数据集D划分为两个互斥的集合，其中一个集合作为训练集S，另一个作为测试集T，即.在S上训练出模型后，用T来评估其作为测试误差，作为对泛化误差的估计。</p>
+<p>以二分类任务为例，假定D包含1000个样本，将其划分为S包含700个样本，T包含300个样本，用S进行训练，如果模型在T上有90个样本分类错误，那么其错误率为（90/300）*100%=30%，精度为1-30%=70%。</p>
+<p>注意事项：<br>（1）训练/测试集的划分要尽可能保持数据分布的一致性，避免因数据划分过程引入额外的偏差而对最终结果产生影响。例如在分类任务中至少要保持样本的类别比例相似，尝采用分层采样的方法，即采样过程中保留类别比例。<br>（2）即便在给定训练/测试集的样本比例后，仍存在多种划分方式对初始数据集D进行分割。因此，单次使用留出法得到的估计结果往往不够稳定可靠，在使用留出法时，一般要采用若干次随机划分、重复进行试验评估或取平均值作为留出法的评估结果。</p>
+<p>在这里，还有一个窘境：若训练集S包含绝大多数样本，则训练处的模型可能更接近于用D训练出的模型，但由于T比较小，评估结果可能不够稳定准确，测试集小，评估结果的方差较大；若令测试集T多包含一些样本，则训练集S与差别更大了，被评估的模型与用D训练出的模型相比可能有较大的差别，从而降低了评估结果的保真性（fidelity）。</p>
+<p>常见解决方法：将大约2/3~4/5的样本用于训练，剩余样本用于测试。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">clear all;</div><div class="line">close all;</div><div class="line">clc;</div><div class="line">data = csvread(&apos;irisdata.csv&apos;);</div><div class="line">[S,T]=divide(data,0.7);</div><div class="line"></div><div class="line"></div><div class="line">function [S,T]=divide(data,rate)</div><div class="line">    S = [];</div><div class="line">    T = [];</div><div class="line">    [m, n] = size(data);</div><div class="line">    labels = data(:,n);</div><div class="line">    labelsClass = unique(labels);</div><div class="line">    weight = [];</div><div class="line">    for i=1:length(labelsClass)</div><div class="line">        weight(i) = round(sum(ismember(labels,labelsClass(i)))*rate);</div><div class="line">    end</div><div class="line">    for i=1:length(labelsClass)</div><div class="line">        index = find(labels==labelsClass(i));</div><div class="line">        randomIndex = index(randperm(length(index)));</div><div class="line">        S = [S;data(randomIndex(1:weight(i)),:)];</div><div class="line">        T = [T;data(randomIndex(weight(i)+1:sum(ismember(labels,labelsClass(i)))),:)];</div><div class="line">    end</div><div class="line">end</div></pre></td></tr></table></figure></p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wx.jpg" alt="听城 WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/zfb.jpg" alt="听城 Alipay"/>
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/matlab/" rel="tag"># matlab</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/10/python解决八数码问题/" rel="next" title="python解决八数码问题">
+                <i class="fa fa-chevron-left"></i> python解决八数码问题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/10/16/matlab自助法实现/" rel="prev" title="matlab自助法实现">
+                matlab自助法实现 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微薄</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
 
 
           </div>
@@ -374,6 +576,17 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -658,10 +871,10 @@
 
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
 
-  
+
 
   
 
@@ -679,6 +892,18 @@
       <script id="dsq-count-scr" src="https://zhangpu.disqus.com/count.js" async></script>
     
 
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://zhangpu1211.github.io/2017/10/16/matlab流出法实现/';
+          this.page.identifier = '2017/10/16/matlab流出法实现/';
+          this.page.title = 'matlab流出法实现';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://zhangpu.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
     
 
   

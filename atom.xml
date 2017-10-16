@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://zhangpu1211.github.io/"/>
-  <updated>2017-10-10T13:22:21.108Z</updated>
+  <updated>2017-10-16T01:38:56.516Z</updated>
   <id>https://zhangpu1211.github.io/</id>
   
   <author>
@@ -14,6 +14,96 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>matlab信息增益实现</title>
+    <link href="https://zhangpu1211.github.io/2017/10/16/matlab%E4%BF%A1%E6%81%AF%E5%A2%9E%E7%9B%8A%E5%AE%9E%E7%8E%B0/"/>
+    <id>https://zhangpu1211.github.io/2017/10/16/matlab信息增益实现/</id>
+    <published>2017-10-16T01:37:55.000Z</published>
+    <updated>2017-10-16T01:38:56.516Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>一般地，一个决策树包含一个根节点，若干个内部节点和若干个叶节点，叶结点对应决策结果，其他每个节点对应于一个属性测试，每个结点包含的样本集合根据属性测试的结果被划分到子节点中；根节点包含样本全集，从根节点到每个叶节点的路径对应了一个判定测试序列。决策树学习的目的是为了产生一颗泛化能力强，处理未见实例能力强的决策树。</p>
+</blockquote>
+<p><strong>信息熵</strong><br>信息熵是度量样本集合纯度最常用的一种指标，假定当前样本集合D中第k类样本所占比例为pk(1,2,..|y|),则D的信息熵定义为</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2065390-0f76ac7ea232c7e2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>其中Ent(D)的值越小，则D的纯度越高。</p>
+<p><strong>信息增益</strong><br>假定离散属性a有V个可能的取值a1,a2,…,aV,若使用a来对样本集D进行划分，则会产生V个分支节点，其中第v个分支节点包含了D中所有在属性a上取值为av的样本，记为Dv,根据信息熵的公式，在考虑到不同的分支节点所包含的样本数不同，给分支节点赋予权重|Dv|/|D|,即样本数越多的分支节点的影响越大，于是可计算出用属性a对样本集D进行划分所获得的”信息增益”。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2065390-be4733f67b03c33a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>一般而言，信息增益越大，则意味着使用属性a来进行划分所得的”纯度提升”越大。因此，我们可以用信息增益来进行决策树的划分属性选择。</p>
+<p><strong>实例分析</strong><br>以下表的数据为例：其中有17个训练正例，学习目标是预测是不是好瓜的决策树。分类目标|Y|=2</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2065390-32d6e37a597f2df8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>信息熵计算得</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2065390-9b718bffe55882fa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2065390-6cf20184358dff72.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2065390-2ea1446f8382eaac.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>上述实现代码为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">close all;</div><div class="line">clear all;</div><div class="line">clc;</div><div class="line">data = csvread(&apos;watermelon2.0.csv&apos;);</div><div class="line">InforGain = gain(data);</div><div class="line"></div><div class="line">function InforGain = gain(data)</div><div class="line">    [m, n] = size(data);</div><div class="line">    InforGain = zeros(n-1,2);</div><div class="line">    labels = data(:,n);</div><div class="line">    for i=1:n</div><div class="line">        tmp&#123;i&#125; = [];</div><div class="line">        percen&#123;i&#125; = [];</div><div class="line">        col = data(:,i);</div><div class="line">        unicol = unique(col);</div><div class="line">        %计算每一列有几类，并把每一类的信息熵和比例存储起来</div><div class="line">        for j = 1:length(unicol)</div><div class="line">            num = length(find(col==unicol(j)));</div><div class="line">            pnum = length(find(col==unicol(j) &amp; labels == 1));</div><div class="line">            rate = pnum/num;</div><div class="line">            if i==7</div><div class="line">                rate = num/length(labels);</div><div class="line">            end</div><div class="line">            gain = -(rate*log2(rate)+(1-rate)*log2(1-rate));</div><div class="line">            tmp&#123;i&#125;=[tmp&#123;i&#125; gain];</div><div class="line">            percen&#123;i&#125;=[percen&#123;i&#125; num/length(col)];</div><div class="line">        end</div><div class="line">    end</div><div class="line">    %整体信息熵</div><div class="line">    InforEntropy = tmp&#123;length(tmp)&#125;(1);</div><div class="line">    %将NAN转化为0</div><div class="line">    for i = 1:length(tmp)</div><div class="line">        tmp&#123;i&#125;(isnan(tmp&#123;i&#125;)) = 0;</div><div class="line">        %disp(tmp&#123;i&#125;);</div><div class="line">    end</div><div class="line">    %求每一个属性列的信息增益</div><div class="line">    for i = 1:length(percen)-1</div><div class="line">        InforGain(i,:) = [i,roundn(InforEntropy-sum(tmp&#123;i&#125;.*percen&#123;i&#125;),-3)];</div><div class="line">        disp(InforEntropy-sum(tmp&#123;i&#125;.*percen&#123;i&#125;));</div><div class="line">    end</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;一般地，一个决策树包含一个根节点，若干个内部节点和若干个叶节点，叶结点对应决策结果，其他每个节点对应于一个属性测试，每个结点包含的样本集合根据属性测试的结果被划分到子节点中；根节点包含样本全集，从根节点到每个叶节点的路径对应了一个判定测试序列。决策
+    
+    </summary>
+    
+      <category term="算法" scheme="https://zhangpu1211.github.io/categories/Algorithm/"/>
+    
+    
+      <category term="matlab" scheme="https://zhangpu1211.github.io/tags/matlab/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>matlab自助法实现</title>
+    <link href="https://zhangpu1211.github.io/2017/10/16/matlab%E8%87%AA%E5%8A%A9%E6%B3%95%E5%AE%9E%E7%8E%B0/"/>
+    <id>https://zhangpu1211.github.io/2017/10/16/matlab自助法实现/</id>
+    <published>2017-10-16T01:37:40.000Z</published>
+    <updated>2017-10-16T01:38:31.162Z</updated>
+    
+    <content type="html"><![CDATA[<p>方法：以bootstrap sampling为基础，给定包含m个样本的数据集，我们对它进行采样产生数据集D’：每次随机从D中挑选一个样本，将其拷贝放入D’，然后将该样本放回初始数据集D中，使得该样本在下次采样时仍有可能被采到；这个过程重复m次以后，我们就得到了包含m个样本的数据集D’。将D’用作训练集，D\D’用作测试集；这样实际评估的模型与期望评估的模型都使用m个训练样本，而仍有数据总量约1/3的、没在训练集中出现的样本用于测试，这样的测试结果，也成为“包外估计”（out-of bag estimate）.</p>
+<p>在这个过程中，样本在m次采样中始终不被采到的概率是(1-1/m)m，取极限得到<br>即通过自助采样，初始数据集D中约有36.8%的样本未出现在采样数据集D’中。</p>
+<p>使用条件：<br>（1）在数据集较小，难以有效划分训练/测试集时很有用；<br>（2）可从初始数据集中产生多个不同的训练集，对集成学习等方法很有用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">clear all;</div><div class="line">close all;</div><div class="line">clc;</div><div class="line"></div><div class="line">data=csvread(&apos;irisdata.csv&apos;);</div><div class="line">[s,t]=zizhu(data);</div><div class="line">csvwrite(&apos;s.csv&apos;,s);</div><div class="line">csvwrite(&apos;t.csv&apos;,t);</div><div class="line"></div><div class="line">function [s,t]=zizhu(data)</div><div class="line">    t = data;</div><div class="line">    [m,n] = size(data);</div><div class="line">    s = zeros(m,n);</div><div class="line">    labels = [];</div><div class="line">    for i=1:m</div><div class="line">        index = UNIDRND(m);</div><div class="line">        labels = [labels index];</div><div class="line">        s(i,:) = data(index,:);</div><div class="line">    end</div><div class="line">    kind=unique(labels);</div><div class="line">    disp(length(kind))</div><div class="line">    t(kind,:) = [];</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;方法：以bootstrap sampling为基础，给定包含m个样本的数据集，我们对它进行采样产生数据集D’：每次随机从D中挑选一个样本，将其拷贝放入D’，然后将该样本放回初始数据集D中，使得该样本在下次采样时仍有可能被采到；这个过程重复m次以后，我们就得到了包含m个样本的
+    
+    </summary>
+    
+      <category term="算法" scheme="https://zhangpu1211.github.io/categories/Algorithm/"/>
+    
+    
+      <category term="matlab" scheme="https://zhangpu1211.github.io/tags/matlab/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>matlab流出法实现</title>
+    <link href="https://zhangpu1211.github.io/2017/10/16/matlab%E6%B5%81%E5%87%BA%E6%B3%95%E5%AE%9E%E7%8E%B0/"/>
+    <id>https://zhangpu1211.github.io/2017/10/16/matlab流出法实现/</id>
+    <published>2017-10-16T01:35:19.000Z</published>
+    <updated>2017-10-16T01:36:55.611Z</updated>
+    
+    <content type="html"><![CDATA[<p>留出法(hold-out)<br>方法：直接将数据集D划分为两个互斥的集合，其中一个集合作为训练集S，另一个作为测试集T，即.在S上训练出模型后，用T来评估其作为测试误差，作为对泛化误差的估计。</p>
+<p>以二分类任务为例，假定D包含1000个样本，将其划分为S包含700个样本，T包含300个样本，用S进行训练，如果模型在T上有90个样本分类错误，那么其错误率为（90/300）*100%=30%，精度为1-30%=70%。</p>
+<p>注意事项：<br>（1）训练/测试集的划分要尽可能保持数据分布的一致性，避免因数据划分过程引入额外的偏差而对最终结果产生影响。例如在分类任务中至少要保持样本的类别比例相似，尝采用分层采样的方法，即采样过程中保留类别比例。<br>（2）即便在给定训练/测试集的样本比例后，仍存在多种划分方式对初始数据集D进行分割。因此，单次使用留出法得到的估计结果往往不够稳定可靠，在使用留出法时，一般要采用若干次随机划分、重复进行试验评估或取平均值作为留出法的评估结果。</p>
+<p>在这里，还有一个窘境：若训练集S包含绝大多数样本，则训练处的模型可能更接近于用D训练出的模型，但由于T比较小，评估结果可能不够稳定准确，测试集小，评估结果的方差较大；若令测试集T多包含一些样本，则训练集S与差别更大了，被评估的模型与用D训练出的模型相比可能有较大的差别，从而降低了评估结果的保真性（fidelity）。</p>
+<p>常见解决方法：将大约2/3~4/5的样本用于训练，剩余样本用于测试。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">clear all;</div><div class="line">close all;</div><div class="line">clc;</div><div class="line">data = csvread(&apos;irisdata.csv&apos;);</div><div class="line">[S,T]=divide(data,0.7);</div><div class="line"></div><div class="line"></div><div class="line">function [S,T]=divide(data,rate)</div><div class="line">    S = [];</div><div class="line">    T = [];</div><div class="line">    [m, n] = size(data);</div><div class="line">    labels = data(:,n);</div><div class="line">    labelsClass = unique(labels);</div><div class="line">    weight = [];</div><div class="line">    for i=1:length(labelsClass)</div><div class="line">        weight(i) = round(sum(ismember(labels,labelsClass(i)))*rate);</div><div class="line">    end</div><div class="line">    for i=1:length(labelsClass)</div><div class="line">        index = find(labels==labelsClass(i));</div><div class="line">        randomIndex = index(randperm(length(index)));</div><div class="line">        S = [S;data(randomIndex(1:weight(i)),:)];</div><div class="line">        T = [T;data(randomIndex(weight(i)+1:sum(ismember(labels,labelsClass(i)))),:)];</div><div class="line">    end</div><div class="line">end</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;留出法(hold-out)&lt;br&gt;方法：直接将数据集D划分为两个互斥的集合，其中一个集合作为训练集S，另一个作为测试集T，即.在S上训练出模型后，用T来评估其作为测试误差，作为对泛化误差的估计。&lt;/p&gt;
+&lt;p&gt;以二分类任务为例，假定D包含1000个样本，将其划分为S包含70
+    
+    </summary>
+    
+      <category term="算法" scheme="https://zhangpu1211.github.io/categories/Algorithm/"/>
+    
+    
+      <category term="matlab" scheme="https://zhangpu1211.github.io/tags/matlab/"/>
+    
+  </entry>
   
   <entry>
     <title>python解决八数码问题</title>
