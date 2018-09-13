@@ -449,17 +449,17 @@
         <blockquote>
 <p>最近学习java的时候建数据库，用到了create_time和update_time，我想设置成current_time，但是在mysql5,7之前貌似不支持这个操作，没办法那就升级一下吧！</p>
 </blockquote>
-<h4 id="下载地址"><a href="#下载地址" class="headerlink" title="下载地址"></a>下载地址</h4><p>首先当然是现在了，<a href="https://dev.mysql.com/downloads/file/?id=467269" target="_blank" rel="external">地址在这里</a>,你可能看到它会提示你登录，这么麻烦呢！肯定不适合我这个懒人了，往下看，果然有提示<strong><a href="https://dev.mysql.com/get/archives/mysql-5.7/mysql-5.7.17-winx64.zip" target="_blank" rel="external">No thanks, just start my download.</a></strong>，点击下载就行啦。</p>
+<h4 id="下载地址"><a href="#下载地址" class="headerlink" title="下载地址"></a>下载地址</h4><p>首先当然是现在了，<a href="https://dev.mysql.com/downloads/file/?id=467269" target="_blank" rel="noopener">地址在这里</a>,你可能看到它会提示你登录，这么麻烦呢！肯定不适合我这个懒人了，往下看，果然有提示<strong><a href="https://dev.mysql.com/get/archives/mysql-5.7/mysql-5.7.17-winx64.zip" target="_blank" rel="noopener">No thanks, just start my download.</a></strong>，点击下载就行啦。</p>
 <h4 id="升级mysql版本"><a href="#升级mysql版本" class="headerlink" title="升级mysql版本"></a>升级mysql版本</h4><ul>
 <li>备份原来 phpStudy 中 MySQL 安装目录，这个备份因人而异，不过最关键的还是你的本地数据库了，最保险的做法就是导出sql文件，升级完成后在导入</li>
 <li>解压下载的mysql文件，将内容复制到phpstudy中mysql目录下</li>
 <li>复制一份 my-default.ini ，重命名为 my.ini</li>
 <li><p>打开my.ini,增加如下内容，这里的路径为你原来phpstudy中mysql的路径</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">basedir=&quot;D:/phpStudy/MySQL/&quot;</div><div class="line">datadir=&quot;D:/phpStudy/MySQL/data/&quot;</div><div class="line">character-set-server=utf8</div><div class="line">port=3306</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">basedir=&quot;D:/phpStudy/MySQL/&quot;</span><br><span class="line">datadir=&quot;D:/phpStudy/MySQL/data/&quot;</span><br><span class="line">character-set-server=utf8</span><br><span class="line">port=3306</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>添加bin目录到系统环境变量path中</p>
 </li>
-<li>在mysql的bin目录下打开cmd，执行如下操作<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mysqld --initialize</div><div class="line">mysqld -install</div></pre></td></tr></table></figure>
+<li>在mysql的bin目录下打开cmd，执行如下操作<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysqld --initialize</span><br><span class="line">mysqld -install</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>至此mysql升级结束，下面来填坑</p>
@@ -652,7 +652,7 @@ var jiathis_config={
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -663,7 +663,7 @@ var jiathis_config={
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -674,7 +674,7 @@ var jiathis_config={
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -754,7 +754,7 @@ var jiathis_config={
             <ul class="links-of-blogroll-list">
               
                 <li class="links-of-blogroll-item">
-                  <a href="http://www.jianshu.com/u/e3457816e729" title="阿叨叨" target="_blank">阿叨叨</a>
+                  <a href="https://www.jianshu.com/u/7947b308f313" title="koala" target="_blank">koala</a>
                 </li>
               
             </ul>
@@ -799,7 +799,7 @@ var jiathis_config={
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
