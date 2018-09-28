@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Colaboratory配合Google Drive使用GPU运行机器学习代码]]></title>
+    <url>%2F2018%2F09%2F28%2FColaboratory%E9%85%8D%E5%90%88Google-Drive%E4%BD%BF%E7%94%A8GPU%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%BB%A3%E7%A0%81%2F</url>
+    <content type="text"><![CDATA[参考： https://medium.com/deep-learning-turkey/google-colab-free-gpu-tutorial-e113627b9f5dhttps://blog.csdn.net/ssssdbucdbod/article/details/80397808https://blog.csdn.net/Lee412726/article/details/82854746提前声明，你需要有一个google 账号，某些过程可能需要科学上网哦！ 新建或上传ipnb文件，并用Colaboratory打开然后再修改-&gt;笔记本设置中可以更改py文件类型以及GPU、TPU加速此时你已经可以使用GPU畅快的运行代码了 建立文件与google drive关联由于每次打开文件后台资源都是随机分配的，在运行代码之后一定要记得将结果保存。当然有的时候我们可以直接将所需文件上传到google drive上，由于资源随机分配，因此需要建立他们之间的关系。以下操作每次打开的时候，也需要重新执行。 第一步进行授权绑定 12345678910111213141516!apt-get install -y -qq software-properties-common python-software-properties module-init-tools#!add-apt-repository -y ppa:alessandro-strada/ppa 2&gt;&amp;1 &gt; /dev/null#!apt-get update -qq 2&gt;&amp;1 &gt; /dev/null#!apt-get -y install -qq google-drive-ocamlfuse fuse!wget https://launchpad.net/~alessandro-strada/+archive/ubuntu/google-drive-ocamlfuse-beta/+build/15331130/+files/google-drive-ocamlfuse_0.7.0-0ubuntu1_amd64.deb!dpkg -i google-drive-ocamlfuse_0.7.0-0ubuntu1_amd64.deb!apt-get install -f!apt-get -y install -qq fusefrom google.colab import authauth.authenticate_user()from oauth2client.client import GoogleCredentialscreds = GoogleCredentials.get_application_default()import getpass!google-drive-ocamlfuse -headless -id=&#123;creds.client_id&#125; -secret=&#123;creds.client_secret&#125; &lt; /dev/null 2&gt;&amp;1 | grep URLvcode = getpass.getpass()!echo &#123;vcode&#125; | google-drive-ocamlfuse -headless -id=&#123;creds.client_id&#125; -secret=&#123;creds.client_secret&#125; 第二步关联google drive 12!mkdir -p drive!google-drive-ocamlfuse drive 12345# 指定当前的工作目录import os# 此处为google drive中的文件路径,drive为之前指定的工作根目录要加上.#Colab Notebooks为你的文件存放的路径，可以自行更改os.chdir(&quot;drive/Colab Notebooks&quot;) 此时你可以用!ls命令查看路径是否正确之后就可以尽情使用啦]]></content>
+      <tags>
+        <tag>tool</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA['新的开始']]></title>
     <url>%2F2018%2F09%2F13%2F%E6%96%B0%E7%9A%84%E5%BC%80%E5%A7%8B%2F</url>
     <content type="text"><![CDATA[过了许久，终于打算重新开始更新博客了，过去的事情追不回来，珍惜眼前，做好现在该做的事情。从现在开始努力！！！加油，各位]]></content>
